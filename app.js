@@ -14,6 +14,28 @@ const telefonInputEl = document.getElementById("telefon");
 // Masukkan URL Web App Google Apps Script anda di sini:
 const scriptURL = 'https://script.google.com/macros/s/AKfycbwp3eM1D6tIxY3LO1hfHkJ4EV2huaoW7NYy-825nrdtTg1S-jQHq2qO9PJOdGhkHFVX0w/exec';
 
+// Fungsi untuk animasi nombor bergerak (Live Counter)
+function animateValue(element, start, end, duration) {
+  if (start === end) {
+    element.innerText = end;
+    return;
+  }
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    // Gunakan fungsi easing (ease-out) supaya kelajuan nombor perlahan di penghujung
+    const easeOut = 1 - Math.pow(1 - progress, 3);
+    element.innerText = Math.floor(easeOut * (end - start) + start);
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    } else {
+      element.innerText = end;
+    }
+  };
+  window.requestAnimationFrame(step);
+}
+
 // Fungsi untuk mengambil data Live Counter dari Google Sheet
 async function fetchCounters() {
   try {
@@ -21,8 +43,14 @@ async function fetchCounters() {
     const data = await response.json();
     
     if (data.pertubuhan !== undefined && data.peserta !== undefined) {
-      document.getElementById("countPertubuhan").innerText = data.pertubuhan;
-      document.getElementById("countPeserta").innerText = data.peserta;
+      const pertubuhanEl = document.getElementById("countPertubuhan");
+      const pesertaEl = document.getElementById("countPeserta");
+      const startPertubuhan = parseInt(pertubuhanEl.innerText) || 0;
+      const startPeserta = parseInt(pesertaEl.innerText) || 0;
+      
+      // Laksanakan animasi mengira (tempoh 2000ms atau 2 saat)
+      animateValue(pertubuhanEl, startPertubuhan, data.pertubuhan, 2000);
+      animateValue(pesertaEl, startPeserta, data.peserta, 2000);
       
       // Kemas kini senarai 5 pertubuhan terakhir
       if (data.senaraiTerbaru && data.senaraiTerbaru.length > 0) {
