@@ -113,6 +113,11 @@ color:white;
 transition:all 0.3s ease;
 }
 
+input[type="text"],
+textarea{
+text-transform:uppercase;
+}
+
 input:focus,
 textarea:focus{
 
@@ -180,4 +185,108 @@ margin-top:20px;
 text-align:center;
 
 font-weight:600;
+}
+
+/* Gaya Butang Share WhatsApp */
+.share-btn{
+display:block;
+width:100%;
+margin-top:15px;
+padding:15px;
+border-radius:12px;
+background:#25D366;
+color:white;
+text-align:center;
+text-decoration:none;
+font-weight:bold;
+transition:all 0.3s ease;
+box-shadow:0 4px 15px rgba(37,211,102,0.2);
+}
+
+.share-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 6px 20px rgba(37,211,102,0.4);
+}
+
+/* Gaya Notifikasi Toast */
+.toast{
+position:fixed;
+bottom:30px;
+left:50%;
+transform:translateX(-50%) translateY(100px);
+background:#4CAF50;
+color:white;
+padding:15px 25px;
+border-radius:10px;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+font-weight:600;
+opacity:0;
+visibility:hidden;
+transition:all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+z-index:1000;
+text-align:center;
+width:max-content;
+}
+
+.toast.show{
+transform:translateX(-50%) translateY(0);
+opacity:1;
+visibility:visible;
+}
+
+/* Animasi Loading Spinner */
+.spinner{
+display:inline-block;
+width:18px;
+height:18px;
+border:3px solid rgba(0,0,0,0.3);
+border-radius:50%;
+border-top-color:#000;
+animation:spin 1s linear infinite;
+vertical-align:middle;
+margin-right:8px;
+margin-top:-2px;
+}
+
+@keyframes spin{
+to{transform:rotate(360deg);}
+}
+
+/* Gaya Kotak Ringkasan (Summary) */
+.summary-box{
+background:rgba(0,0,0,0.4);
+border:1px solid rgba(255,215,0,0.3);
+border-radius:12px;
+padding:25px 20px;
+margin-top:10px;
+}
+
+.summary-box h2{
+color:#FFD700;
+text-align:center;
+margin-bottom:20px;
+font-size:1.3rem;
+}
+
+.summary-box p{
+margin-bottom:12px;
+font-size:0.95rem;
+color:#e0e0e0;
+line-height:1.5;
+}
+
+.summary-box p strong{
+color:#FFD700;
+}
+
+button.btn-secondary{
+background:#333;
+color:white;
+margin-top:25px;
+box-shadow:none;
+}
+
+button.btn-secondary:hover{
+background:#444;
+box-shadow:0 6px 20px rgba(0,0,0,0.4);
 }

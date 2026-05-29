@@ -68,6 +68,20 @@
     required
   />
 
+  <label for="telefon">
+    No. Telefon (WhatsApp)
+  </label>
+
+  <input
+    type="tel"
+    id="telefon"
+    name="telefon"
+    autocomplete="tel"
+    inputmode="numeric"
+    placeholder="Contoh: 012 345 6789"
+    required
+  />
+
   <label for="peserta">
     Jumlah Peserta
   </label>
@@ -78,6 +92,7 @@
     name="peserta"
     min="1"
     max="500"
+    inputmode="numeric"
     required
   />
 
@@ -103,6 +118,8 @@
   </div>
 
 </div>
+
+<div id="toast" class="toast"></div>
 
 <script src="app.js"></script>
 
