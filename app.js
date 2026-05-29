@@ -23,6 +23,21 @@ async function fetchCounters() {
     if (data.pertubuhan !== undefined && data.peserta !== undefined) {
       document.getElementById("countPertubuhan").innerText = data.pertubuhan;
       document.getElementById("countPeserta").innerText = data.peserta;
+      
+      // Kemas kini senarai 5 pertubuhan terakhir
+      if (data.senaraiTerbaru && data.senaraiTerbaru.length > 0) {
+        const latestList = document.getElementById("latestList");
+        latestList.innerHTML = ""; // Kosongkan senarai lama
+        
+        data.senaraiTerbaru.forEach(nama => {
+          const li = document.createElement("li");
+          li.innerText = "✅ " + nama;
+          latestList.appendChild(li);
+        });
+        
+        // Tunjukkan kotak senarai
+        document.getElementById("latestRegistrationsBox").style.display = "block";
+      }
     }
   } catch (error) {
     console.error("Gagal mengambil data live counter:", error);

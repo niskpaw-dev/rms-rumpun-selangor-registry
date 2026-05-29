@@ -110,6 +110,39 @@ font-weight:600;
 text-transform:uppercase;
 }
 
+/* Gaya Senarai Pendaftaran Terbaru */
+.latest-registrations{
+background:rgba(255,215,0,0.1);
+border:1px solid rgba(255,215,0,0.3);
+border-radius:12px;
+padding:15px;
+margin-bottom:25px;
+}
+
+.latest-registrations h4{
+color:#FFD700;
+font-size:0.9rem;
+margin-bottom:10px;
+text-transform:uppercase;
+letter-spacing:1px;
+}
+
+.latest-registrations ul{
+list-style:none;
+padding:0;
+}
+
+.latest-registrations li{
+color:#e0e0e0;
+font-size:0.85rem;
+padding:5px 0;
+border-bottom:1px dashed rgba(255,255,255,0.1);
+}
+
+.latest-registrations li:last-child{
+border-bottom:none;
+}
+
 label{
 
 display:block;
