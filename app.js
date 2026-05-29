@@ -117,6 +117,12 @@ const originalBtnText = submitBtn.innerHTML;
 submitBtn.innerHTML = '<span class="spinner"></span> Sedang Menghantar...';
 submitBtn.disabled = true; // Elakkan spam klik
 
+// Tukar semua input teks kepada huruf besar sebelum dihantar ke pangkalan data.
+// Cara ini membetulkan isu "cursor jump" di peranti mudah alih berbanding menukar secara live.
+document.querySelectorAll('input[type="text"], textarea').forEach(input => {
+  input.value = input.value.toUpperCase();
+});
+
 // Masukkan URL Web App Google Apps Script anda yang disalin tadi di sini:
 const scriptURL = 'https://script.google.com/macros/s/AKfycbwp3eM1D6tIxY3LO1hfHkJ4EV2huaoW7NYy-825nrdtTg1S-jQHq2qO9PJOdGhkHFVX0w/exec';
 
