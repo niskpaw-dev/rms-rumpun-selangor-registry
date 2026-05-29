@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="ms">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+<meta
+ name="viewport"
+ content="width=device-width, initial-scale=1.0"
+/>
+
+  <title>
+    RMS Rumpun Selangor Registry
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  />
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="card">
+
+```
+<h1>
+  RMS Rumpun Selangor
+</h1>
+
+<p class="subtitle">
+  Sistem Pendaftaran Persembahan Silat
+</p>
+
+<form id="silatForm">
+
+  <label>
+    Nama Pertubuhan
+  </label>
+
+  <input
+    type="text"
+    id="pertubuhan"
+    required
+  />
+
+  <label>
+    Nama Pengerusi / Tok Guru
+  </label>
+
+  <input
+    type="text"
+    id="pengerusi"
+    required
+  />
+
+  <label>
+    Jumlah Peserta
+  </label>
+
+  <input
+    type="number"
+    id="peserta"
+    required
+  />
+
+  <label>
+    Catatan
+  </label>
+
+  <textarea
+    id="catatan"
+  ></textarea>
+
+  <button type="submit">
+    Hantar Penyertaan
+  </button>
+
+</form>
+
+<div id="status"></div>
+```
+
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
