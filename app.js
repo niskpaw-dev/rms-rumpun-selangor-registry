@@ -11,6 +11,25 @@ document.getElementById(
 const toastDiv = document.getElementById("toast");
 const telefonInputEl = document.getElementById("telefon");
 
+// Masukkan URL Web App Google Apps Script anda di sini:
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwp3eM1D6tIxY3LO1hfHkJ4EV2huaoW7NYy-825nrdtTg1S-jQHq2qO9PJOdGhkHFVX0w/exec';
+
+// Fungsi untuk mengambil data Live Counter dari Google Sheet
+async function fetchCounters() {
+  try {
+    const response = await fetch(scriptURL);
+    const data = await response.json();
+    
+    if (data.pertubuhan !== undefined && data.peserta !== undefined) {
+      document.getElementById("countPertubuhan").innerText = data.pertubuhan;
+      document.getElementById("countPeserta").innerText = data.peserta;
+    }
+  } catch (error) {
+    console.error("Gagal mengambil data live counter:", error);
+  }
+}
+window.addEventListener("DOMContentLoaded", fetchCounters);
+
 // Auto-format No. Telefon ketika menaip
 telefonInputEl.addEventListener("input", function (e) {
   let val = e.target.value.replace(/\D/g, ""); // Buang semua huruf/simbol kecuali nombor
@@ -123,9 +142,6 @@ document.querySelectorAll('input[type="text"], textarea').forEach(input => {
   input.value = input.value.toUpperCase();
 });
 
-// Masukkan URL Web App Google Apps Script anda yang disalin tadi di sini:
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwp3eM1D6tIxY3LO1hfHkJ4EV2huaoW7NYy-825nrdtTg1S-jQHq2qO9PJOdGhkHFVX0w/exec';
-
 try {
   // Hantar borang ke Google Script menggunakan Fetch API
   const response = await fetch(scriptURL, { method: 'POST', body: new FormData(form) });
@@ -135,9 +151,15 @@ try {
     if (resultText.trim() === "Quota_Full") {
       statusDiv.style.color = "#ff4444";
       statusDiv.innerHTML = "⚠️ Harap maaf, pendaftaran gagal. Kuota maksimum 500 orang peserta telah penuh!";
+    } else if (resultText.trim() === "Duplicate_Org") {
+      statusDiv.style.color = "#ff4444";
+      statusDiv.innerHTML = "⚠️ Harap maaf, nama Pertubuhan ini telah pun didaftarkan sebelum ini!";
     } else {
       statusDiv.innerHTML = ""; // Kosongkan teks status
       showToast("✅ Pendaftaran berjaya dihantar!");
+      
+      // Kemas kini Live Counter selepas pendaftaran berjaya
+      fetchCounters();
       
       // Ambil data dari kotak borang sebelum dikosongkan
       const valPertubuhan = document.getElementById("pertubuhan").value;

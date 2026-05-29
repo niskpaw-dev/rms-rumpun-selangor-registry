@@ -80,6 +80,36 @@ color:#aaa;
 font-size:0.95rem;
 }
 
+/* Gaya Live Counter */
+.counter-container{
+display:flex;
+justify-content:space-between;
+gap:15px;
+margin-bottom:25px;
+}
+
+.counter-box{
+flex:1;
+background:rgba(0,0,0,0.4);
+border:1px solid rgba(255,215,0,0.2);
+border-radius:12px;
+padding:15px 10px;
+text-align:center;
+}
+
+.counter-box h3{
+color:#FFD700;
+font-size:1.8rem;
+margin-bottom:5px;
+}
+
+.counter-box p{
+color:#e0e0e0;
+font-size:0.8rem;
+font-weight:600;
+text-transform:uppercase;
+}
+
 label{
 
 display:block;
