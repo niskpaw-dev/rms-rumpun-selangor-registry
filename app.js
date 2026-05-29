@@ -8,12 +8,33 @@ document.getElementById(
 "status"
 );
 
+// Tetapkan tarikh tutup (26 Jun 2026, 11:59:59 PM Waktu Malaysia)
+const tarikhTutup = new Date("2026-06-26T23:59:59+08:00");
+
+// Semak jika waktu sekarang sudah melepasi tarikh tutup semasa halaman dimuatkan
+if (new Date() > tarikhTutup) {
+  Array.from(form.elements).forEach(el => el.disabled = true); // Nyahaktifkan semua input
+  const submitBtn = form.querySelector('button[type="submit"]');
+  submitBtn.innerHTML = "Pendaftaran Ditutup";
+  submitBtn.style.background = "#555";
+  submitBtn.style.color = "#aaa";
+  submitBtn.style.boxShadow = "none";
+  statusDiv.style.color = "#ff4444";
+  statusDiv.innerHTML = "⚠️ Harap maaf, tarikh pendaftaran telah tamat pada 26 Jun 2026.";
+}
+
 form.addEventListener(
 "submit",
 
 async (e)=>{
 
 e.preventDefault();
+
+// Semakan sekuriti tambahan jika borang cuba dihantar selepas tarikh tutup
+if (new Date() > tarikhTutup) {
+  statusDiv.innerHTML = "⚠️ Harap maaf, tarikh pendaftaran telah tamat.";
+  return;
+}
 
 const pesertaInput = document.getElementById("peserta").value;
 
