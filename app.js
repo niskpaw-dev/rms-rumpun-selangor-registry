@@ -38,10 +38,10 @@ if (new Date() > tarikhTutup) {
 
 const pesertaInput = document.getElementById("peserta").value;
 
-// Semak jika input HANYA mengandungi digit nombor dan nilainya 1 atau lebih
-if (!/^\d+$/.test(pesertaInput) || parseInt(pesertaInput) < 1) {
+// Semak jika input HANYA mengandungi digit nombor, dan nilainya antara 1 hingga 500
+if (!/^\d+$/.test(pesertaInput) || parseInt(pesertaInput) < 1 || parseInt(pesertaInput) > 500) {
   statusDiv.style.color = "#ff4444"; // Warna merah muda untuk ralat
-  statusDiv.innerHTML = "❌ Ralat: Jumlah Peserta mestilah nombor yang sah (minimum 1).";
+  statusDiv.innerHTML = "❌ Ralat: Jumlah Peserta mestilah nombor yang sah (1 hingga 500).";
   return; // Hentikan fungsi jika ralat
 }
 
