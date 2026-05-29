@@ -60,10 +60,16 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbwp3eM1D6tIxY3LO1hfHk
 try {
   // Hantar borang ke Google Script menggunakan Fetch API
   const response = await fetch(scriptURL, { method: 'POST', body: new FormData(form) });
+  const resultText = await response.text();
   
   if (response.ok) {
-    statusDiv.innerHTML = "✅ Pendaftaran berjaya disimpan ke Google Sheets!";
-    form.reset();
+    if (resultText.trim() === "Quota_Full") {
+      statusDiv.style.color = "#ff4444";
+      statusDiv.innerHTML = "⚠️ Harap maaf, pendaftaran gagal. Kuota maksimum 500 orang peserta telah penuh!";
+    } else {
+      statusDiv.innerHTML = "✅ Pendaftaran berjaya disimpan ke Google Sheets!";
+      form.reset();
+    }
   } else {
     throw new Error('Ralat rangkaian');
   }
