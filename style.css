@@ -2,7 +2,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Inter', 'Segoe UI', system-ui, sans-serif;
 }
 
 body{
@@ -47,7 +47,15 @@ padding:30px;
 border-radius:20px;
 
 box-shadow:
-0 0 30px rgba(0,0,0,0.5);
+0 15px 35px rgba(0,0,0,0.6);
+}
+
+.logo{
+display:block;
+margin:0 auto 20px auto;
+max-width:130px;
+height:auto;
+filter:drop-shadow(0 5px 15px rgba(0,0,0,0.5));
 }
 
 h1{
@@ -57,6 +65,8 @@ text-align:center;
 margin-bottom:10px;
 
 color:#FFD700;
+
+letter-spacing:1px;
 }
 
 .subtitle{
@@ -65,7 +75,9 @@ text-align:center;
 
 margin-bottom:30px;
 
-color:#ccc;
+color:#aaa;
+
+font-size:0.95rem;
 }
 
 label{
@@ -75,6 +87,12 @@ display:block;
 margin-top:18px;
 
 margin-bottom:8px;
+
+font-size:0.9rem;
+
+color:#e0e0e0;
+
+font-weight:600;
 }
 
 input,
@@ -84,17 +102,32 @@ width:100%;
 
 padding:14px;
 
-border:none;
+border:1px solid rgba(255,255,255,0.1);
 
 border-radius:12px;
 
 background:#111;
 
 color:white;
+
+transition:all 0.3s ease;
+}
+
+input:focus,
+textarea:focus{
+
+outline:none;
+
+border-color:#FFD700;
+
+box-shadow:0 0 0 3px rgba(255,215,0,0.2);
+
+background:#1a1a1a;
 }
 
 textarea{
 min-height:100px;
+resize:vertical;
 }
 
 button{
@@ -117,14 +150,16 @@ font-weight:bold;
 
 cursor:pointer;
 
-transition:0.3s;
+transition:all 0.3s ease;
+
+box-shadow:0 4px 15px rgba(255,215,0,0.2);
 }
 
 button:hover{
 
-transform:translateY(-2px);
+transform:translateY(-3px);
 
-opacity:0.9;
+box-shadow:0 6px 20px rgba(255,215,0,0.4);
 }
 
 #status{
@@ -132,4 +167,6 @@ opacity:0.9;
 margin-top:20px;
 
 text-align:center;
+
+font-weight:600;
 }

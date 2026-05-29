@@ -28,7 +28,12 @@
 
   <div class="card">
 
-```
+<img
+  src="https://arleta.site/interactivelink/1610/RMS-JATA.png"
+  alt="Logo RMS Rumpun Selangor"
+  class="logo"
+/>
+
 <h1>
   RMS Rumpun Selangor
 </h1>
@@ -39,42 +44,48 @@
 
 <form id="silatForm">
 
-  <label>
+  <label for="pertubuhan">
     Nama Pertubuhan
   </label>
 
   <input
     type="text"
     id="pertubuhan"
+    name="pertubuhan"
     required
   />
 
-  <label>
+  <label for="pengerusi">
     Nama Pengerusi / Tok Guru
   </label>
 
   <input
     type="text"
     id="pengerusi"
+    name="pengerusi"
     required
   />
 
-  <label>
+  <label for="peserta">
     Jumlah Peserta
   </label>
 
   <input
     type="number"
     id="peserta"
+    name="peserta"
+    min="1"
     required
   />
 
-  <label>
+  <label for="catatan">
     Catatan
   </label>
 
   <textarea
     id="catatan"
+    name="catatan"
+    rows="4"
   ></textarea>
 
   <button type="submit">
@@ -84,7 +95,7 @@
 </form>
 
 <div id="status"></div>
-```
+
 
   </div>
 
