@@ -154,10 +154,10 @@ if (new Date() > tarikhTutup) {
 const pesertaInput = document.getElementById("peserta").value;
 const telefonInput = document.getElementById("telefon").value;
 
-// Semak jika input HANYA mengandungi digit nombor, dan nilainya antara 1 hingga 500
-if (!/^\d+$/.test(pesertaInput) || parseInt(pesertaInput) < 1 || parseInt(pesertaInput) > 500) {
+// Semak jika input HANYA mengandungi digit nombor, dan nilainya antara 1 hingga 1500
+if (!/^\d+$/.test(pesertaInput) || parseInt(pesertaInput) < 1 || parseInt(pesertaInput) > 1500) {
   statusDiv.style.color = "#ff4444"; // Warna merah muda untuk ralat
-  statusDiv.innerHTML = "❌ Ralat: Jumlah Peserta mestilah nombor yang sah (1 hingga 500).";
+  statusDiv.innerHTML = "❌ Ralat: Jumlah Peserta mestilah nombor yang sah (1 hingga 1000).";
   return; // Hentikan fungsi jika ralat
 }
 
@@ -193,7 +193,7 @@ try {
   if (response.ok) {
     if (resultText.trim() === "Quota_Full") {
       statusDiv.style.color = "#ff4444";
-      statusDiv.innerHTML = "⚠️ Harap maaf, pendaftaran gagal. Kuota maksimum 500 orang peserta telah penuh!";
+      statusDiv.innerHTML = "⚠️ Harap maaf, pendaftaran gagal. Kuota maksimum 1000 orang peserta telah penuh!";
     } else if (resultText.trim() === "Duplicate_Org") {
       statusDiv.style.color = "#ff4444";
       statusDiv.innerHTML = "⚠️ Harap maaf, nama Pertubuhan ini telah pun didaftarkan sebelum ini!";
