@@ -157,7 +157,7 @@ const telefonInput = document.getElementById("telefon").value;
 // Semak jika input HANYA mengandungi digit nombor, dan nilainya antara 1 hingga 1500
 if (!/^\d+$/.test(pesertaInput) || parseInt(pesertaInput) < 1 || parseInt(pesertaInput) > 1500) {
   statusDiv.style.color = "#ff4444"; // Warna merah muda untuk ralat
-  statusDiv.innerHTML = "❌ Ralat: Jumlah Peserta mestilah nombor yang sah (1 hingga 1000).";
+  statusDiv.innerHTML = "❌ Ralat: Jumlah Peserta mestilah nombor yang sah (1 hingga 1500).";
   return; // Hentikan fungsi jika ralat
 }
 
